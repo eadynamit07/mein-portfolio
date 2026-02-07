@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard - Portfolio</title>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/admin.css">
+</head>
+<body>
+    <header class="main-header">
+        <nav>
+            <div class="logo">Admin Dashboard</div>
+            <div class="hamburger-menu" id="hamburgerBtn">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="index.html">Zurück zur Website</a></li>
+                <li><button id="logoutBtn" class="btn-logout">Logout</button></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="admin-main">
+        <section class="admin-section">
+            <h2><span class="icon">👤</span> Profil bearbeiten</h2>
+            <form id="profileForm" class="admin-form">
+                <div class="form-grid">
+                    <div class="form-group">
+                        <label>Name</label>
+                        <input type="text" id="profileNameInput" class="form-control" placeholder="Ihr Name">
+                    </div>
+                    <div class="form-group">
+                        <label>Geburtsdatum</label>
+                        <input type="date" id="profileBirthdateInput" class="form-control">
+                        <small class="form-hint">Das Alter wird automatisch berechnet.</small>
+                    </div>
+                </div>
+
+                <div class="form-group profile-upload-group">
+                    <label>Profilbild</label>
+                    <div class="image-upload-container">
+                        <img id="profileImagePreview" src="assets/images/placeholder-profile.jpg" alt="Vorschau" class="preview-img">
+                        <div class="upload-controls">
+                            <input type="file" id="profileImageFileInput" accept="image/*" class="file-input" hidden>
+                            <button type="button" class="btn-upload" onclick="document.getElementById('profileImageFileInput').click()">
+                                Bild auswählen
+                            </button>
+                            <small class="form-hint">Max. 500KB empfohlen</small>
+                        </div>
+                    </div>
+                    <input type="hidden" id="profileImageBase64">
+                </div>
+
+                <div class="form-group">
+                    <label>Über mich (Bio)</label>
+                    <textarea id="profileBioInput" class="form-control" rows="5" placeholder="Erzählen Sie etwas über sich..."></textarea>
+                </div>
+                
+                <div class="form-actions-right">
+                    <button type="submit" class="btn-save">💾 Speichern</button>
+                </div>
+            </form>
+        </section>
+
+        <section class="admin-section">
+            <h2>Neues Projekt hinzufügen</h2>
+            <form id="projectForm" class="admin-form">
+                <input type="hidden" id="projectIdInput"> <!-- Hidden ID for edit mode -->
+                
+                <div class="form-group">
+                    <label>Titel</label>
+                    <input type="text" id="projectTitleInput" class="form-control" required placeholder="Projektname">
+                </div>
+                
+                <div class="form-group">
+                    <label>Beschreibung</label>
+                    <textarea id="projectDescInput" class="form-control" rows="4" required placeholder="Was macht das Projekt?"></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label>Projektbild</label>
+                    <div class="image-upload-container">
+                        <img id="projectImagePreview" src="assets/images/placeholder-project.jpg" alt="Vorschau" class="preview-img" style="border-radius: 8px; width: 120px; height: 80px;">
+                        <div class="upload-controls">
+                            <input type="file" id="projectImageFileInput" accept="image/*" class="file-input" hidden>
+                            <button type="button" class="btn-upload" onclick="document.getElementById('projectImageFileInput').click()">
+                                Bild auswählen
+                            </button>
+                            <small class="form-hint">Max. 800KB</small>
+                        </div>
+                    </div>
+                    <input type="hidden" id="projectImageBase64">
+                    <!-- Fallback URL input hidden but available if needed or for editing old projects -->
+                    <input type="hidden" id="projectImageInput"> 
+                </div>
+
+                <div class="form-grid">
+                    <div class="form-group">
+                        <label>Webseite Link</label>
+                        <input type="url" id="projectWebInput" class="form-control" placeholder="https://...">
+                    </div>
+                    <div class="form-group">
+                        <label>Code Link</label>
+                        <input type="url" id="projectCodeInput" class="form-control" placeholder="https://github.com/...">
+                    </div>
+                </div>
+
+                <div class="form-actions">
+                    <button type="submit" class="btn-save" id="saveProjectBtn">Projekt hinzufügen</button>
+                    <button type="button" class="btn-cancel hidden" id="cancelEditBtn">Abbrechen</button>
+                </div>
+            </form>
+        </section>
+
+        <section class="admin-section">
+            <h2>Existierende Projekte</h2>
+            <div id="adminProjectsList" class="admin-projects-list">
+                <!-- Admin Projekt Elemente werden hier geladen -->
+                <div class="loading-spinner">Lade Projekte...</div>
+            </div>
+        </section>
+    </main>
+
+    <script type="module" src="js/admin.js"></script>
+</body>
+</html>

@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="de">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Mein Portfolio</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="css/responsive.css" />
+  </head>
+  <body>
+    <header class="main-header">
+      <nav>
+        <div class="logo">Portfolio</div>
+        <div class="hamburger-menu" id="hamburgerBtn">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+        <ul class="nav-links" id="navLinks">
+          <li><a href="#about">Über mich</a></li>
+          <li><a href="#projects">Projekte</a></li>
+          <li>
+            <a href="login.html" class="btn-login" id="loginBtn">Login</a>
+          </li>
+          <li>
+            <a href="admin.html" class="btn-login hidden" id="adminBtn"
+              >Admin</a
+            >
+          </li>
+        </ul>
+      </nav>
+    </header>
+
+    <main>
+      <section id="about" class="hero-section">
+        <div class="hero-content">
+          <div class="profile-image-container">
+            <!-- Platzhalterbild, wird durch JS ersetzt wenn Daten da sind -->
+            <img
+              src="assets/images/placeholder-profile.jpg"
+              alt="Profilbild"
+              id="profileImage"
+              class="profile-img"
+            />
+          </div>
+          <div class="profile-text">
+            <h1 id="profileName">Hallo, ich bin [Name]</h1>
+            <p class="subtitle" id="profileAge">25 Jahre alt</p>
+            <p class="bio" id="profileBio">Lade Informationen...</p>
+          </div>
+        </div>
+      </section>
+
+      <section id="projects" class="projects-section">
+        <h2>Meine Projekte</h2>
+        <div class="projects-grid" id="projectsGrid">
+          <!-- Projekte werden hier dynamisch eingefügt -->
+          <div class="loading-spinner">Lade Projekte...</div>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <p>&copy; 2024 Mein Portfolio. Alle Rechte vorbehalten.</p>
+    </footer>
+
+    <script type="module" src="js/app.js"></script>
+  </body>
+</html>
